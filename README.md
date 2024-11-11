@@ -1,8 +1,40 @@
-# React + Vite
+## Features
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Basic CRUD (Create, Read, Update, Delete) Operation
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+
+**Client:** Vite + React, Redux, Bootstrap
+
+**Server:** json-server
+
+
+## Installation
+
+Follow these steps:
+
+1. Clone the repository
+```bash
+  git clone https://github.com/NursiNursi/rumbia-coding-test.git
+```
+
+2. Move to directory
+```bash
+  cd rumbia-coding-test
+```
+    
+3. Install Dependencies
+```bash
+  npm install
+```
+
+4. Start json-server
+```bash
+  npm run json-server
+```
+
+5. Start the App (open in another terminal)
+```bash
+  npm run dev
+```
