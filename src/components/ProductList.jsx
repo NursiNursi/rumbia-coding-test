@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import {
   deleteProduct,
@@ -17,7 +16,22 @@ import {
 } from "react-bootstrap";
 import { AiFillDelete, AiFillEdit, AiOutlineEye } from "react-icons/ai";
 
-function ProductList({ productData, fetchAllProducts }) {
+import AddProduct from "./AddProduct";
+import ModalComponent from "./ui/ModalComponent";
+import FormComponent from "./ui/FormComponent";
+import DetailComponent from "./ui/DetailComponent";
+import toast from "react-hot-toast";
+
+function ProductList({
+  productData,
+  fetchAllProducts,
+  deleteProduct,
+  updateProduct,
+}) {
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showViewModal, setShowViewModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -34,9 +48,72 @@ function ProductList({ productData, fetchAllProducts }) {
       .catch((error) => console.log(error));
   };
 
+  const handleView = (productInfo) => {
+    setShowViewModal(true);
+    setSelectedProduct(productInfo);
+  };
+
+  const handleEdit = (productInfo) => {
+    console.log(productInfo);
+    setShowEditModal(true);
+    setSelectedProduct(productInfo);
+  };
+
+  const confirmUpdate = () => {
+    fetch(`http://localhost:3011/products/${selectedProduct.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: selectedProduct.id,
+        name: selectedProduct.name,
+        sku: selectedProduct.sku,
+        brand: selectedProduct.brand,
+        description: selectedProduct.description,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        updateProduct(selectedProduct.id, data);
+        setShowEditModal(false);
+        toast.success("Product successfully edited");
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+  };
+
+  const handleDelete = (productInfo) => {
+    setShowDeleteModal(true);
+    setSelectedProduct(productInfo);
+  };
+
+  const confirmDelete = () => {
+    fetch(`http://localhost:3011/products/${selectedProduct.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok === true) {
+          deleteProduct(selectedProduct.id);
+        }
+        setShowDeleteModal(false);
+        toast.success("Product successfully deleted");
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+  };
+
   return (
     <>
       <Container>
+        <Row className="py-5 mt-5">
+          <AddProduct />
+        </Row>
         <Row>
           <Col>
             <Table hover responsive="sm">
@@ -66,7 +143,7 @@ function ProductList({ productData, fetchAllProducts }) {
                         }}
                       >
                         <div>
-                          <Button onClick={() => {}}>
+                          <Button onClick={() => handleView(ele)}>
                             <div
                               style={{
                                 display: "flex",
@@ -82,7 +159,10 @@ function ProductList({ productData, fetchAllProducts }) {
                           </Button>
                         </div>
                         <div>
-                          <Button onClick={() => {}} variant="outline-primary">
+                          <Button
+                            onClick={() => handleEdit(ele)}
+                            variant="outline-primary"
+                          >
                             <div
                               style={{
                                 display: "flex",
@@ -98,7 +178,10 @@ function ProductList({ productData, fetchAllProducts }) {
                           </Button>
                         </div>
                         <div>
-                          <Button onClick={() => {}} variant="outline-danger">
+                          <Button
+                            onClick={() => handleDelete(ele)}
+                            variant="outline-danger"
+                          >
                             <div
                               style={{
                                 display: "flex",
@@ -130,6 +213,50 @@ function ProductList({ productData, fetchAllProducts }) {
           </Col>
         </Row>
       </Container>
+
+      {showViewModal && (
+        <ModalComponent
+          showModal={showViewModal}
+          setShowModal={setShowViewModal}
+          title="Product Detail"
+          confirmButtonText="OK"
+          cancelButtonText="Cancel"
+          content={<DetailComponent selectedproduct={selectedProduct} />}
+          showButton={false}
+        />
+      )}
+
+      {showEditModal && (
+        <ModalComponent
+          showModal={showEditModal}
+          setShowModal={setShowEditModal}
+          confirmAction={confirmUpdate}
+          title="Edit Product"
+          content={
+            <FormComponent
+              selectedproduct={selectedProduct}
+              setselectedproduct={setSelectedProduct}
+            />
+          }
+          confirmButtonText="Update"
+          cancelButtonText="Cancel"
+          isConfirmDisabled={
+            selectedProduct.name === "" || selectedProduct.address === ""
+          }
+        />
+      )}
+
+      {showDeleteModal && (
+        <ModalComponent
+          showModal={showDeleteModal}
+          setShowModal={setShowDeleteModal}
+          confirmAction={confirmDelete}
+          title="Delete Product"
+          content="Are you sure you want to delete this product ?"
+          confirmButtonText="Confirm"
+          cancelButtonText="Cancel"
+        />
+      )}
     </>
   );
 }

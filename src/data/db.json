@@ -150,13 +150,6 @@
           "salePrice": 330000
         }
       ]
-    },
-    {
-      "id": "4f89",
-      "name": "New Product Update",
-      "sku": "SKU11 update",
-      "brand": "Brand New update",
-      "description": "LEsso update"
     }
   ]
 }
