@@ -1,0 +1,162 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Produk A",
+      "sku": "SKU001",
+      "brand": "Brand1",
+      "description": "Ini adalah deskripsi untuk Produk A.",
+      "variations": [
+        {
+          "name": "Variasi 1A",
+          "sku": "VAR001A",
+          "salePrice": 100000
+        },
+        {
+          "name": "Variasi 2A",
+          "sku": "VAR002A",
+          "salePrice": 120000
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Produk B",
+      "sku": "SKU002",
+      "brand": "Brand2",
+      "description": "Ini adalah deskripsi untuk Produk B.",
+      "variations": [
+        {
+          "name": "Variasi 1B",
+          "sku": "VAR001B",
+          "salePrice": 150000
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Produk C",
+      "sku": "SKU003",
+      "brand": "Brand1",
+      "description": "Ini adalah deskripsi untuk Produk C.",
+      "variations": [
+        {
+          "name": "Variasi 1C",
+          "sku": "VAR001C",
+          "salePrice": 200000
+        },
+        {
+          "name": "Variasi 2C",
+          "sku": "VAR002C",
+          "salePrice": 250000
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Produk D",
+      "sku": "SKU004",
+      "brand": "Brand3",
+      "description": "Ini adalah deskripsi untuk Produk D.",
+      "variations": [
+        {
+          "name": "Variasi 1D",
+          "sku": "VAR001D",
+          "salePrice": 180000
+        },
+        {
+          "name": "Variasi 2D",
+          "sku": "VAR002D",
+          "salePrice": 210000
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Produk E",
+      "sku": "SKU005",
+      "brand": "Brand2",
+      "description": "Ini adalah deskripsi untuk Produk E.",
+      "variations": [
+        {
+          "name": "Variasi 1E",
+          "sku": "VAR001E",
+          "salePrice": 230000
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Produk F",
+      "sku": "SKU006",
+      "brand": "Brand1",
+      "description": "Ini adalah deskripsi untuk Produk F.",
+      "variations": [
+        {
+          "name": "Variasi 1F",
+          "sku": "VAR001F",
+          "salePrice": 240000
+        },
+        {
+          "name": "Variasi 2F",
+          "sku": "VAR002F",
+          "salePrice": 260000
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Produk G",
+      "sku": "SKU007",
+      "brand": "Brand3",
+      "description": "Ini adalah deskripsi untuk Produk G.",
+      "variations": [
+        {
+          "name": "Variasi 1G",
+          "sku": "VAR001G",
+          "salePrice": 270000
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Produk H",
+      "sku": "SKU008",
+      "brand": "Brand2",
+      "description": "Ini adalah deskripsi untuk Produk H.",
+      "variations": [
+        {
+          "name": "Variasi 1H",
+          "sku": "VAR001H",
+          "salePrice": 300000
+        },
+        {
+          "name": "Variasi 2H",
+          "sku": "VAR002H",
+          "salePrice": 320000
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "name": "Produk I",
+      "sku": "SKU009",
+      "brand": "Brand1",
+      "description": "Ini adalah deskripsi untuk Produk I.",
+      "variations": [
+        {
+          "name": "Variasi 1I",
+          "sku": "VAR001I",
+          "salePrice": 330000
+        }
+      ]
+    },
+    {
+      "id": "4f89",
+      "name": "New Product Update",
+      "sku": "SKU11 update",
+      "brand": "Brand New update",
+      "description": "LEsso update"
+    }
+  ]
+}
